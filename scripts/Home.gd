@@ -239,6 +239,13 @@ func _ready() -> void:
 	$SettingsPopup/VBox.move_child(privacy_button, $SettingsPopup/VBox/CloseButton.get_index())
 	settings_popup.about_to_popup.connect(func(): privacy_button.visible = Ads.privacy_options_required())
 	privacy_button.visible = false
+	# Google Play wants the privacy policy reachable from inside the app too.
+	var policy_button := Button.new()
+	policy_button.text = "Privacy policy"
+	policy_button.custom_minimum_size = Vector2(0, 44)
+	policy_button.pressed.connect(func(): OS.shell_open("https://davide-mariotti.github.io/apps/ascendkeep/privacy/"))
+	$SettingsPopup/VBox.add_child(policy_button)
+	$SettingsPopup/VBox.move_child(policy_button, $SettingsPopup/VBox/CloseButton.get_index())
 	# The cloud save ID: what the privacy policy asks for when someone wants their online save deleted.
 	var save_id_label := Label.new()
 	save_id_label.add_theme_font_size_override("font_size", 12)
