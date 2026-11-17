@@ -1,0 +1,17 @@
+Create the standard Ascend Keep projectile sprite.
+
+Design:
+
+* small concentrated cyan arcane bolt viewed from above;
+* bright narrow central core;
+* short tapered energy trail integrated into the sprite;
+* compact aerodynamic shape;
+* pale cyan center and deep blue transparent edges;
+* no physical arrow;
+* no bullet casing;
+* no fire;
+* no lightning branches;
+* extremely readable at 32×32 pixels;
+* oriented toward the right so Godot can rotate it toward the target.
+
+[INCLUDE ASCENDKEEP VISUAL STYLE BIBLE]

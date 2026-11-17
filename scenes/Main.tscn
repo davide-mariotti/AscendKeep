@@ -1,0 +1,208 @@
+[gd_scene load_steps=9 format=3]
+
+[ext_resource type="Script" path="res://scripts/Main.gd" id="1"]
+[ext_resource type="Script" path="res://scripts/Tower.gd" id="2"]
+[ext_resource type="Theme" path="res://ui/UITheme.tres" id="3"]
+[ext_resource type="Texture2D" path="res://assets/icons/wave.svg" id="4"]
+[ext_resource type="Texture2D" path="res://assets/icons/soul.svg" id="5"]
+[ext_resource type="Texture2D" path="res://assets/icons/restart.svg" id="6"]
+[ext_resource type="Texture2D" path="res://assets/art/battle-background.png" id="7"]
+[ext_resource type="Texture2D" path="res://assets/icons/restart_game.svg" id="8"]
+
+[node name="Main" type="Node2D"]
+script = ExtResource("1")
+
+[node name="Background" type="Sprite2D" parent="."]
+position = Vector2(360, 640)
+scale = Vector2(0.9375, 0.930232)
+texture = ExtResource("7")
+
+[node name="Tower" type="Node2D" parent="."]
+position = Vector2(360, 640)
+script = ExtResource("2")
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2(360, 640)
+
+[node name="EnemiesContainer" type="Node2D" parent="."]
+
+[node name="ProjectilesContainer" type="Node2D" parent="."]
+
+[node name="HUD" type="CanvasLayer" parent="."]
+
+[node name="Root" type="Control" parent="HUD"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+theme = ExtResource("3")
+
+[node name="TopBarPanel" type="Panel" parent="HUD/Root"]
+anchor_right = 1.0
+offset_left = 16.0
+offset_top = 16.0
+offset_right = -16.0
+offset_bottom = 76.0
+
+[node name="TopBar" type="HBoxContainer" parent="HUD/Root/TopBarPanel"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 16.0
+offset_top = 8.0
+offset_right = -16.0
+offset_bottom = -8.0
+theme_override_constants/separation = 20
+
+[node name="WaveBox" type="HBoxContainer" parent="HUD/Root/TopBarPanel/TopBar"]
+layout_mode = 2
+size_flags_vertical = 4
+theme_override_constants/separation = 8
+
+[node name="WaveIcon" type="TextureRect" parent="HUD/Root/TopBarPanel/TopBar/WaveBox"]
+custom_minimum_size = Vector2(24, 24)
+layout_mode = 2
+texture = ExtResource("4")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="WaveLabel" type="Label" parent="HUD/Root/TopBarPanel/TopBar/WaveBox"]
+layout_mode = 2
+text = "Wave 1"
+
+[node name="HPBar" type="ProgressBar" parent="HUD/Root/TopBarPanel/TopBar"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 4
+custom_minimum_size = Vector2(0, 28)
+max_value = 100.0
+value = 100.0
+show_percentage = false
+
+[node name="CoinsBox" type="HBoxContainer" parent="HUD/Root/TopBarPanel/TopBar"]
+layout_mode = 2
+size_flags_vertical = 4
+theme_override_constants/separation = 8
+
+[node name="CoinsIcon" type="TextureRect" parent="HUD/Root/TopBarPanel/TopBar/CoinsBox"]
+custom_minimum_size = Vector2(24, 24)
+layout_mode = 2
+pivot_offset = Vector2(12, 12)
+texture = ExtResource("5")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="CoinsLabel" type="Label" parent="HUD/Root/TopBarPanel/TopBar/CoinsBox"]
+layout_mode = 2
+text = "0"
+
+[node name="BossBanner" type="Label" parent="HUD/Root"]
+visible = false
+anchor_left = 0.5
+anchor_right = 0.5
+anchor_top = 0.5
+offset_left = -200.0
+offset_right = 200.0
+offset_top = -140.0
+offset_bottom = -90.0
+pivot_offset = Vector2(200, 25)
+mouse_filter = 2
+theme_override_colors/font_color = Color(0.85, 0.35, 0.4, 1)
+theme_override_font_sizes/font_size = 30
+horizontal_alignment = 1
+text = "⚠ BOSS WAVE ⚠"
+
+[node name="UnlockToast" type="PanelContainer" parent="HUD/Root"]
+visible = false
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -170.0
+offset_right = 170.0
+offset_top = 84.0
+offset_bottom = 148.0
+mouse_filter = 2
+
+[node name="VBox" type="VBoxContainer" parent="HUD/Root/UnlockToast"]
+layout_mode = 2
+theme_override_constants/separation = 2
+
+[node name="TitleLabel" type="Label" parent="HUD/Root/UnlockToast/VBox"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.85, 0.72, 0.42, 1)
+theme_override_font_sizes/font_size = 18
+horizontal_alignment = 1
+text = "Tier 2 Unlocked"
+
+[node name="DescLabel" type="Label" parent="HUD/Root/UnlockToast/VBox"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.75, 0.8, 0.84, 1)
+theme_override_font_sizes/font_size = 13
+horizontal_alignment = 1
+autowrap_mode = 2
+text = "Description goes here."
+
+[node name="GameOverPanel" type="Control" parent="HUD/Root"]
+visible = false
+anchor_right = 1.0
+anchor_bottom = 1.0
+
+[node name="Dim" type="ColorRect" parent="HUD/Root/GameOverPanel"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+color = Color(0, 0, 0, 0.6)
+
+[node name="Card" type="Panel" parent="HUD/Root/GameOverPanel"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -260.0
+offset_top = -210.0
+offset_right = 260.0
+offset_bottom = 210.0
+
+[node name="Content" type="VBoxContainer" parent="HUD/Root/GameOverPanel/Card"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 24.0
+offset_top = 24.0
+offset_right = -24.0
+offset_bottom = -24.0
+theme_override_constants/separation = 14
+
+[node name="TitleLabel" type="Label" parent="HUD/Root/GameOverPanel/Card/Content"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 30
+horizontal_alignment = 1
+text = "The Keep Has Fallen"
+
+[node name="PointsLabel" type="Label" parent="HUD/Root/GameOverPanel/Card/Content"]
+layout_mode = 2
+horizontal_alignment = 1
+text = "Wave 1 reached
+Voidborn defeated: 0
+Souls absorbed: 0
+Souls total: 0"
+
+[node name="AutoRestartLabel" type="Label" parent="HUD/Root/GameOverPanel/Card/Content"]
+visible = false
+layout_mode = 2
+theme_override_colors/font_color = Color(0.6, 0.68, 0.74, 1)
+theme_override_font_sizes/font_size = 14
+horizontal_alignment = 1
+text = "Auto Restart is on — a new run begins shortly."
+
+[node name="ButtonsRow" type="HBoxContainer" parent="HUD/Root/GameOverPanel/Card/Content"]
+layout_mode = 2
+theme_override_constants/separation = 10
+
+[node name="ReturnButton" type="Button" parent="HUD/Root/GameOverPanel/Card/Content/ButtonsRow"]
+layout_mode = 2
+size_flags_horizontal = 3
+custom_minimum_size = Vector2(0, 56)
+icon = ExtResource("6")
+text = "Return to the Keep"
+
+[node name="RestartButton" type="Button" parent="HUD/Root/GameOverPanel/Card/Content/ButtonsRow"]
+layout_mode = 2
+size_flags_horizontal = 3
+custom_minimum_size = Vector2(0, 56)
+icon = ExtResource("8")
+text = "Restart"

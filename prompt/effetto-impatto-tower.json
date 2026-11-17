@@ -1,0 +1,29 @@
+Create one frame of a cyan magical impact effect for AscendKeep.
+
+Design:
+
+* compact circular burst viewed directly from above;
+* sharp cyan energy fragments expanding outward;
+* pale white-cyan center;
+* transparent fading edges;
+* no smoke;
+* no fire;
+* no debris;
+* no background;
+* contained within a circular footprint;
+* readable at 64×64 pixels.
+
+This is a brief projectile impact effect, not a large explosion.
+
+[INCLUDE ASCENDKEEP VISUAL STYLE BIBLE]
+
+Per creare l’animazione, ripeti il prompt aggiungendo:
+
+Create animation frame 1 of 5: initial small flash.
+
+Poi:
+
+frame 2: energy begins expanding;
+frame 3: maximum expansion;
+frame 4: fragments separate and fade;
+frame 5: almost completely dissipated.

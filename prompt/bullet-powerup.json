@@ -1,0 +1,14 @@
+Create an upgraded Ascend Keep projectile using the standard cyan projectile as reference.
+
+Changes:
+
+* slightly larger core;
+* thin muted gold energy ring around the central bolt;
+* two small cyan energy particles following the projectile;
+* stronger brightness;
+* retain the same direction, proportions and visual family;
+* no large explosion;
+* no complex trail;
+* readable at 32×32 pixels.
+
+[INCLUDE ASCENDKEEP VISUAL STYLE BIBLE]

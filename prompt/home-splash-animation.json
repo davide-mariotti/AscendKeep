@@ -1,0 +1,14 @@
+Animate this exact image with minimal, subtle, looping motion only. Do not add new elements, do not change composition, do not move the camera.
+
+Motion:
+
+* the cyan core glow at the center of the tower slowly pulses brighter and dimmer, breathing in and out;
+* the tiny distant motes of cyan light drift very slightly and twinkle, fading in and out at different times;
+* the pale violet-black Void wisps at the base curl and drift slowly, as if stirred by a faint unseen current;
+* everything else — the tower silhouette, the cracked stone platform, the darkness — stays completely still.
+
+Camera: fully static, no pan, no zoom, no parallax, no shake.
+
+Mood: quiet, slow, ambient — like a living photograph, not a video. The motion should be almost imperceptible at first glance and only reveal itself after a few seconds of watching.
+
+Do not add characters, creatures, text, particles beyond the existing motes, lens flares, or any light source besides the tower's own core glow. Do not change the color palette. Loop-friendly: the first and last frame should match closely enough to loop seamlessly.

@@ -1,0 +1,22 @@
+Create a ranged Voidborn enemy called Void Seer.
+
+Gameplay role:
+
+* stops at a distance;
+* launches corrupted energy projectiles toward the tower;
+* medium health.
+
+Design:
+
+* floating circular Voidborn entity viewed directly from above;
+* central violet eye-like energy aperture without realistic anatomy;
+* three dark curved armor segments orbiting the center;
+* subtle violet energy gathering at the front;
+* elegant and threatening silhouette;
+* no legs;
+* no humanoid face;
+* no staff;
+* no background;
+* rotationally readable for aiming toward the tower.
+
+[INCLUDE ASCENDKEEP VISUAL STYLE BIBLE]

@@ -1,0 +1,16 @@
+Create a corrupted Voidborn projectile sprite.
+
+Design:
+
+* compact violet energy bolt;
+* cracked dark central fragment surrounded by violet flame;
+* short unstable trail;
+* slightly irregular silhouette;
+* oriented toward the right;
+* visually distinct from the cyan tower projectile;
+* readable at 32×32 pixels;
+* no physical arrow;
+* no bullet;
+* no fireball.
+
+[INCLUDE ASCENDKEEP VISUAL STYLE BIBLE]

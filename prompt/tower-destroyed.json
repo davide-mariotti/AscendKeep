@@ -1,0 +1,18 @@
+Create a damaged-state overlay for the Ascend Keep tower.
+
+This must be a transparent overlay, not a complete replacement tower.
+
+Include:
+
+* several dark cracks arranged around a circular central structure;
+* a few faint red-orange damaged areas;
+* tiny fragments of stone;
+* subtle smoke wisps viewed from above;
+* no complete tower;
+* no background;
+* no large explosion;
+* no cyan magical effects except a few unstable flickers.
+
+The overlay should be placeable above any tower evolution stage in Godot.
+
+[INCLUDE ASCENDKEEP VISUAL STYLE BIBLE]

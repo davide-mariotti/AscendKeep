@@ -1,0 +1,12 @@
+# Godot 4+ specific ignores
+.godot/
+
+# Build artifacts
+*.apk
+*.aab
+
+# Android build template & extracted APKs (too large for git)
+/android/
+oldTowerAPK/
+addons/godot-firebase/.env
+/build/

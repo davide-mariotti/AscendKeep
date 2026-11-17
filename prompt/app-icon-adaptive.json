@@ -1,0 +1,20 @@
+Create the AscendKeep adaptive icon foreground layer — the Android adaptive-icon variant of the app icon, used so the OS can mask the icon into a circle, squircle, rounded-square etc. depending on the device launcher.
+
+This is the SAME tower subject as the main app icon (assets/art/icon.png), re-rendered as an isolated foreground layer.
+
+Design:
+
+* identical tower design, pose and glow as the main app icon — same silhouette, same cyan core glow, same violet-black cracks at the base;
+* the tower alone, no background at all;
+* transparent background (alpha channel), fully transparent outside the tower silhouette;
+* keep the tower's most important silhouette details (crown, core glow) within the center 66% of the canvas — Android adaptive icons crop/mask up to ~33% of the outer edge on some launcher shapes, anything critical near the border will be cut off;
+* slightly smaller/more contained than a normal icon composition to survive circular masking without losing the crown or the base.
+
+Composition:
+
+* square 1:1 canvas, same resolution as the main icon (1024×1024);
+* single subject, perfectly centered;
+* no background color, no gradient, no vignette — pure transparency behind the tower;
+* no text, no logo, no UI, no frame, no border, no watermark.
+
+[INCLUDE ASCENDKEEP VISUAL STYLE BIBLE — palette and rendering rules apply, but this asset is exempt from the "top-down only / generous padding" sprite rules, since it is an adaptive app-icon foreground layer, not a gameplay sprite.]

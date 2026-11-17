@@ -1,0 +1,95 @@
+21. Icone degli upgrade
+
+Le icone UI devono essere più semplici degli sprite.
+
+HP
+
+Create a minimalist UI icon for the AscendKeep permanent HP upgrade.
+
+Design:
+
+compact ancient stone wall symbol;
+small cyan rune at the center;
+thick readable silhouette;
+muted stone gray and cyan;
+no heart symbol;
+no text;
+transparent background;
+designed for a 64×64 mobile interface icon.
+
+Use the same dark fantasy visual language as the AscendKeep tower, but simplify all details.
+
+[INCLUDE ASCENDKEEP VISUAL STYLE BIBLE]
+
+Danno
+
+Create a minimalist UI icon for the AscendKeep permanent Damage upgrade.
+
+Design:
+
+concentrated cyan arcane core emitting four short sharp energy rays;
+small muted gold center;
+compact symmetrical shape;
+no sword;
+no weapon;
+no text;
+transparent background;
+designed for a 64×64 mobile interface icon.
+
+[INCLUDE ASCENDKEEP VISUAL STYLE BIBLE]
+
+Raggio
+
+Create a minimalist UI icon for the AscendKeep permanent Range upgrade.
+
+Design:
+
+small central cyan core;
+two thin concentric arcane circles;
+four subtle directional marks;
+compact and symmetrical;
+no crosshair;
+no modern technology;
+no text;
+transparent background;
+designed for a 64×64 mobile interface icon.
+
+[INCLUDE ASCENDKEEP VISUAL STYLE BIBLE]
+
+22. Icone HUD
+
+Serviranno almeno:
+
+Soul;
+wave;
+HP;
+Voidborn eliminati;
+pausa;
+velocità di gioco;
+impostazioni;
+audio;
+musica;
+restart.
+
+Per mantenere lo stile, usa questo template:
+
+Create a minimalist AscendKeep mobile UI icon representing: [ICON FUNCTION].
+
+Visual language:
+
+simplified dark fantasy arcane symbol;
+strong silhouette;
+maximum three main shapes;
+muted stone gray;
+cyan accent;
+muted gold only for important interactive elements;
+no gradients that disappear at small size;
+no text;
+no frame;
+no circular button background;
+transparent background;
+designed to remain clear at 32×32 pixels.
+
+The icon must belong to the same visual family as all AscendKeep interface icons.
+
+[INCLUDE ASCENDKEEP VISUAL STYLE BIBLE]

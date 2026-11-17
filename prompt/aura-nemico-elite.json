@@ -1,0 +1,15 @@
+Create a separate transparent aura overlay for Elite Voidborn enemies.
+
+Design:
+
+* thin circular violet energy field viewed directly from above;
+* broken arcane markings;
+* several subtle outward energy wisps;
+* empty transparent center so an enemy sprite can be placed inside;
+* soft controlled glow;
+* no text;
+* no complete magic circle;
+* no background;
+* readable without overpowering the enemy.
+
+[INCLUDE ASCENDKEEP VISUAL STYLE BIBLE]

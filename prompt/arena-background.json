@@ -1,0 +1,26 @@
+Create a seamless square top-down arena background for AscendKeep.
+
+Environment:
+
+* ancient circular stone platform suspended in endless darkness;
+* cracked dark stone floor;
+* subtle circular architectural patterns around the center;
+* extremely faint cyan runes embedded in the stone;
+* darker outer perimeter fading toward the Void;
+* empty central area reserved for the tower;
+* enough visual variation to avoid looking flat;
+* restrained details so enemies and projectiles remain readable;
+* no tower;
+* no enemies;
+* no UI;
+* no text;
+* no perspective tilt;
+* no horizon;
+* no directional lighting;
+* true top-down orthographic view.
+
+Palette:
+near-black, deep navy, desaturated stone gray and very restrained cyan accents.
+
+Create it as a polished mobile game environment, not as an illustration.
+Square composition, suitable for cropping to different mobile aspect ratios.

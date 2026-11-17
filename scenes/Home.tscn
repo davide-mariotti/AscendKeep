@@ -1,0 +1,993 @@
+[gd_scene load_steps=36 format=3]
+
+[ext_resource type="Script" path="res://scripts/Home.gd" id="1"]
+[ext_resource type="Theme" path="res://ui/UITheme.tres" id="2"]
+[ext_resource type="Texture2D" path="res://assets/icons/tab_battle.svg" id="4"]
+[ext_resource type="Texture2D" path="res://assets/icons/tab_upgrades.svg" id="5"]
+[ext_resource type="Texture2D" path="res://assets/icons/tab_skills.svg" id="6"]
+[ext_resource type="Texture2D" path="res://assets/icons/tab_lab.svg" id="7"]
+[ext_resource type="Texture2D" path="res://assets/icons/tab_marketplace.svg" id="8"]
+[ext_resource type="Texture2D" path="res://assets/icons/soul.svg" id="9"]
+[ext_resource type="Texture2D" path="res://assets/icons/gem.svg" id="10"]
+[ext_resource type="Texture2D" path="res://assets/icons/menu.svg" id="11"]
+[ext_resource type="Texture2D" path="res://assets/icons/hp.svg" id="12"]
+[ext_resource type="Texture2D" path="res://assets/icons/damage.svg" id="13"]
+[ext_resource type="Texture2D" path="res://assets/icons/range.svg" id="14"]
+[ext_resource type="Texture2D" path="res://assets/icons/haste.svg" id="15"]
+[ext_resource type="Texture2D" path="res://assets/icons/souls_gain.svg" id="16"]
+[ext_resource type="Texture2D" path="res://assets/icons/skill_eye.svg" id="17"]
+[ext_resource type="Texture2D" path="res://assets/icons/skill_shield.svg" id="18"]
+[ext_resource type="Texture2D" path="res://assets/icons/skill_bond.svg" id="19"]
+[ext_resource type="Texture2D" path="res://assets/icons/lab_hourglass.svg" id="20"]
+[ext_resource type="Texture2D" path="res://assets/icons/restart.svg" id="21"]
+[ext_resource type="Texture2D" path="res://assets/icons/reset.svg" id="22"]
+[ext_resource type="Texture2D" path="res://assets/icons/credits.svg" id="24"]
+[ext_resource type="Texture2D" path="res://assets/icons/skill_point.svg" id="25"]
+[ext_resource type="Texture2D" path="res://assets/icons/skill_root.svg" id="26"]
+[ext_resource type="Texture2D" path="res://assets/icons/settings.svg" id="27"]
+[ext_resource type="Texture2D" path="res://assets/icons/sfx_icon.svg" id="28"]
+[ext_resource type="Texture2D" path="res://assets/icons/music_icon.svg" id="29"]
+[ext_resource type="Texture2D" path="res://assets/icons/vibration_icon.svg" id="30"]
+[ext_resource type="Texture2D" path="res://assets/art/logo.png" id="34"]
+[ext_resource type="Texture2D" path="res://assets/icons/auto_restart.svg" id="31"]
+[ext_resource type="Texture2D" path="res://assets/icons/watch_ad.svg" id="32"]
+[ext_resource type="Texture2D" path="res://assets/icons/coin_ad.svg" id="33"]
+[ext_resource type="Texture2D" path="res://assets/icons/mission.svg" id="35"]
+[ext_resource type="Texture2D" path="res://assets/icons/milestone.svg" id="36"]
+[ext_resource type="Texture2D" path="res://assets/icons/crit_chance.svg" id="37"]
+[ext_resource type="Texture2D" path="res://assets/icons/crit_damage.svg" id="38"]
+[ext_resource type="Texture2D" path="res://assets/icons/multishot.svg" id="39"]
+[ext_resource type="Texture2D" path="res://assets/icons/regen.svg" id="40"]
+[ext_resource type="Texture2D" path="res://assets/icons/thorns.svg" id="41"]
+[ext_resource type="Texture2D" path="res://assets/icons/deadly_precision.svg" id="42"]
+[ext_resource type="Texture2D" path="res://assets/icons/twin_strike.svg" id="43"]
+[ext_resource type="Texture2D" path="res://assets/icons/stone_skin.svg" id="44"]
+[ext_resource type="Texture2D" path="res://assets/icons/overcharge_core.svg" id="45"]
+[ext_resource type="Texture2D" path="res://assets/icons/resonant_shell.svg" id="46"]
+[ext_resource type="Texture2D" path="res://assets/icons/voidsight.svg" id="47"]
+[ext_resource type="Texture2D" path="res://assets/icons/quickening.svg" id="48"]
+[ext_resource type="Texture2D" path="res://assets/icons/defense_pct.svg" id="49"]
+
+[sub_resource type="ButtonGroup" id="ButtonGroup_tabs"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_cta_normal"]
+bg_color = Color(0.16, 0.13, 0.07, 1)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.78, 0.63, 0.28, 0.9)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_cta_hover"]
+bg_color = Color(0.22, 0.18, 0.09, 1)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.92, 0.77, 0.38, 1)
+shadow_color = Color(0.7, 0.55, 0.2, 0.3)
+shadow_size = 6
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_cta_pressed"]
+bg_color = Color(0.1, 0.08, 0.04, 1)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.78, 0.63, 0.28, 1)
+
+[node name="Home" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+theme = ExtResource("2")
+script = ExtResource("1")
+
+[node name="Background" type="ColorRect" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+color = Color(0.035, 0.045, 0.07, 1)
+
+[node name="BattleSplashBackground" type="TextureRect" parent="."]
+visible = false
+anchor_right = 1.0
+anchor_bottom = 1.0
+expand_mode = 1
+stretch_mode = 6
+
+[node name="TopBarPanel" type="Panel" parent="."]
+anchor_right = 1.0
+offset_left = 16.0
+offset_top = 16.0
+offset_right = -16.0
+offset_bottom = 76.0
+
+[node name="TopBar" type="HBoxContainer" parent="TopBarPanel"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 16.0
+offset_top = 8.0
+offset_right = -16.0
+offset_bottom = -8.0
+theme_override_constants/separation = 20
+
+[node name="SoulsBox" type="HBoxContainer" parent="TopBarPanel/TopBar"]
+layout_mode = 2
+size_flags_vertical = 4
+theme_override_constants/separation = 8
+
+[node name="SoulsIcon" type="TextureRect" parent="TopBarPanel/TopBar/SoulsBox"]
+custom_minimum_size = Vector2(24, 24)
+layout_mode = 2
+modulate = Color(0.85, 0.7, 0.32, 1)
+texture = ExtResource("9")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="SoulsLabel" type="Label" parent="TopBarPanel/TopBar/SoulsBox"]
+layout_mode = 2
+text = "0"
+
+[node name="GemsBox" type="HBoxContainer" parent="TopBarPanel/TopBar"]
+layout_mode = 2
+size_flags_vertical = 4
+theme_override_constants/separation = 8
+
+[node name="GemsIcon" type="TextureRect" parent="TopBarPanel/TopBar/GemsBox"]
+custom_minimum_size = Vector2(24, 24)
+layout_mode = 2
+modulate = Color(0.55, 0.85, 0.95, 1)
+texture = ExtResource("10")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="GemsLabel" type="Label" parent="TopBarPanel/TopBar/GemsBox"]
+layout_mode = 2
+text = "0"
+
+[node name="SkillPointsBox" type="HBoxContainer" parent="TopBarPanel/TopBar"]
+layout_mode = 2
+size_flags_vertical = 4
+theme_override_constants/separation = 8
+
+[node name="SkillPointsIcon" type="TextureRect" parent="TopBarPanel/TopBar/SkillPointsBox"]
+custom_minimum_size = Vector2(24, 24)
+layout_mode = 2
+modulate = Color(0.7, 0.55, 0.85, 1)
+texture = ExtResource("25")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="SkillPointsLabel" type="Label" parent="TopBarPanel/TopBar/SkillPointsBox"]
+layout_mode = 2
+text = "0"
+
+[node name="Spacer" type="Control" parent="TopBarPanel/TopBar"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="MenuButton" type="Button" parent="TopBarPanel/TopBar"]
+custom_minimum_size = Vector2(44, 44)
+layout_mode = 2
+size_flags_vertical = 4
+alignment = 1
+icon_alignment = 1
+icon = ExtResource("11")
+theme_override_constants/icon_max_width = 22
+
+[node name="TabContent" type="Control" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 16.0
+offset_top = 92.0
+offset_right = -16.0
+offset_bottom = -108.0
+
+[node name="BattlePanel" type="Control" parent="TabContent"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+
+[node name="TitleLabel" type="TextureRect" parent="TabContent/BattlePanel"]
+anchor_right = 1.0
+offset_left = 24.0
+offset_top = 16.0
+offset_right = -24.0
+offset_bottom = 76.0
+expand_mode = 1
+stretch_mode = 5
+texture = ExtResource("34")
+
+[node name="TierRow" type="HBoxContainer" parent="TabContent/BattlePanel"]
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -110.0
+offset_top = 84.0
+offset_right = 110.0
+offset_bottom = 128.0
+alignment = 1
+theme_override_constants/separation = 12
+
+[node name="TierLeftButton" type="Button" parent="TabContent/BattlePanel/TierRow"]
+custom_minimum_size = Vector2(44, 44)
+layout_mode = 2
+text = "◀"
+
+[node name="TierLabel" type="Label" parent="TabContent/BattlePanel/TierRow"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_font_sizes/font_size = 20
+horizontal_alignment = 1
+text = "Tier 1"
+
+[node name="TierRightButton" type="Button" parent="TabContent/BattlePanel/TierRow"]
+custom_minimum_size = Vector2(44, 44)
+layout_mode = 2
+text = "▶"
+
+[node name="BattleButton" type="Button" parent="TabContent/BattlePanel"]
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -120.0
+offset_top = -104.0
+offset_right = 120.0
+offset_bottom = -36.0
+theme_override_styles/normal = SubResource("StyleBoxFlat_cta_normal")
+theme_override_styles/hover = SubResource("StyleBoxFlat_cta_hover")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_cta_pressed")
+
+[node name="Content" type="HBoxContainer" parent="TabContent/BattlePanel/BattleButton"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 2
+alignment = 1
+theme_override_constants/separation = 14
+
+[node name="Icon" type="TextureRect" parent="TabContent/BattlePanel/BattleButton/Content"]
+custom_minimum_size = Vector2(28, 28)
+layout_mode = 2
+size_flags_vertical = 4
+mouse_filter = 2
+modulate = Color(0.92, 0.8, 0.5, 1)
+texture = ExtResource("4")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="Label" type="Label" parent="TabContent/BattlePanel/BattleButton/Content"]
+layout_mode = 2
+size_flags_vertical = 4
+mouse_filter = 2
+theme_override_colors/font_color = Color(0.92, 0.8, 0.5, 1)
+theme_override_font_sizes/font_size = 26
+text = "BATTLE"
+
+[node name="UpgradesPanel" type="Control" parent="TabContent"]
+visible = false
+anchor_right = 1.0
+anchor_bottom = 1.0
+
+[node name="ScrollContainer" type="ScrollContainer" parent="TabContent/UpgradesPanel"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = 8.0
+
+[node name="VBox" type="VBoxContainer" parent="TabContent/UpgradesPanel/ScrollContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/separation = 10
+
+[node name="HeaderLabel" type="Label" parent="TabContent/UpgradesPanel/ScrollContainer/VBox"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 24
+horizontal_alignment = 1
+text = "Reconstruction"
+
+[node name="SubLabel" type="Label" parent="TabContent/UpgradesPanel/ScrollContainer/VBox"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.6, 0.68, 0.74, 1)
+theme_override_font_sizes/font_size = 15
+horizontal_alignment = 1
+autowrap_mode = 2
+text = "Spend Souls to permanently strengthen the Core."
+
+[node name="HpButton" type="Button" parent="TabContent/UpgradesPanel/ScrollContainer/VBox"]
+layout_mode = 2
+custom_minimum_size = Vector2(0, 58)
+icon = ExtResource("12")
+text = "Max HP — Lv.0 — 20 Souls
+Reinforce the ancient stone."
+
+[node name="DmgButton" type="Button" parent="TabContent/UpgradesPanel/ScrollContainer/VBox"]
+layout_mode = 2
+custom_minimum_size = Vector2(0, 58)
+icon = ExtResource("13")
+text = "Damage — Lv.0 — 30 Souls
+Amplify the power of the Core."
+
+[node name="RangeButton" type="Button" parent="TabContent/UpgradesPanel/ScrollContainer/VBox"]
+layout_mode = 2
+custom_minimum_size = Vector2(0, 58)
+icon = ExtResource("14")
+text = "Range — Lv.0 — 25 Souls
+Extend the Core's influence."
+
+[node name="HasteButton" type="Button" parent="TabContent/UpgradesPanel/ScrollContainer/VBox"]
+layout_mode = 2
+custom_minimum_size = Vector2(0, 58)
+icon = ExtResource("15")
+text = "Haste — Lv.0 — 35 Souls
+Quicken the Core's pulse."
+
+[node name="SoulsGainButton" type="Button" parent="TabContent/UpgradesPanel/ScrollContainer/VBox"]
+layout_mode = 2
+custom_minimum_size = Vector2(0, 58)
+icon = ExtResource("16")
+text = "Soul Gain — Lv.0 — 40 Souls
+Draw more from every fallen wave."
+
+[node name="CritChanceButton" type="Button" parent="TabContent/UpgradesPanel/ScrollContainer/VBox"]
+layout_mode = 2
+custom_minimum_size = Vector2(0, 58)
+icon = ExtResource("37")
+text = "Critical Strike — Lv.0 — 50 Souls
+A chance for the Core's pulse to strike true."
+
+[node name="CritDamageButton" type="Button" parent="TabContent/UpgradesPanel/ScrollContainer/VBox"]
+layout_mode = 2
+custom_minimum_size = Vector2(0, 58)
+icon = ExtResource("38")
+text = "Critical Power — Lv.0 — 45 Souls
+Amplify the fury of a critical strike."
+
+[node name="MultishotButton" type="Button" parent="TabContent/UpgradesPanel/ScrollContainer/VBox"]
+layout_mode = 2
+custom_minimum_size = Vector2(0, 58)
+icon = ExtResource("39")
+text = "Multishot — Lv.0 — 60 Souls
+A chance to strike two Voidborn at once."
+
+[node name="RegenButton" type="Button" parent="TabContent/UpgradesPanel/ScrollContainer/VBox"]
+layout_mode = 2
+custom_minimum_size = Vector2(0, 58)
+icon = ExtResource("40")
+text = "Regeneration — Lv.0 — 35 Souls
+The stone slowly mends itself."
+
+[node name="ThornsButton" type="Button" parent="TabContent/UpgradesPanel/ScrollContainer/VBox"]
+layout_mode = 2
+custom_minimum_size = Vector2(0, 58)
+icon = ExtResource("41")
+text = "Thorned Stone — Lv.0 — 30 Souls
+Wounds returned to those who strike the Keep."
+
+[node name="SkillsPanel" type="Control" parent="TabContent"]
+visible = false
+anchor_right = 1.0
+anchor_bottom = 1.0
+
+[node name="ScrollContainer" type="ScrollContainer" parent="TabContent/SkillsPanel"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = 8.0
+
+[node name="VBox" type="VBoxContainer" parent="TabContent/SkillsPanel/ScrollContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/separation = 10
+
+[node name="HeaderLabel" type="Label" parent="TabContent/SkillsPanel/ScrollContainer/VBox"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 24
+horizontal_alignment = 1
+text = "Skills"
+
+[node name="SubLabel" type="Label" parent="TabContent/SkillsPanel/ScrollContainer/VBox"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.6, 0.68, 0.74, 1)
+theme_override_font_sizes/font_size = 15
+horizontal_alignment = 1
+autowrap_mode = 2
+text = "A tree of deep, expensive awakenings. Skill Points are earned only by felling bosses."
+
+[node name="LockedLabel" type="Label" parent="TabContent/SkillsPanel/ScrollContainer/VBox"]
+visible = false
+layout_mode = 2
+theme_override_colors/font_color = Color(0.85, 0.72, 0.42, 1)
+theme_override_font_sizes/font_size = 15
+horizontal_alignment = 1
+autowrap_mode = 2
+text = "Unlock Tier 3 to awaken the Skill tree."
+
+[node name="SkillPointsRow" type="HBoxContainer" parent="TabContent/SkillsPanel/ScrollContainer/VBox"]
+layout_mode = 2
+alignment = 1
+theme_override_constants/separation = 8
+
+[node name="SkillPointsIcon" type="TextureRect" parent="TabContent/SkillsPanel/ScrollContainer/VBox/SkillPointsRow"]
+custom_minimum_size = Vector2(20, 20)
+layout_mode = 2
+modulate = Color(0.7, 0.55, 0.85, 1)
+texture = ExtResource("25")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="SkillPointsLabel" type="Label" parent="TabContent/SkillsPanel/ScrollContainer/VBox/SkillPointsRow"]
+layout_mode = 2
+text = "0 Skill Points"
+
+[node name="RootButton" type="Button" parent="TabContent/SkillsPanel/ScrollContainer/VBox"]
+layout_mode = 2
+custom_minimum_size = Vector2(0, 58)
+icon = ExtResource("26")
+text = "Awakened Core — 3 Skill Points
+The Core stirs, ready to grow beyond stone."
+
+[node name="TreeConnector" type="ColorRect" parent="TabContent/SkillsPanel/ScrollContainer/VBox"]
+custom_minimum_size = Vector2(2, 14)
+layout_mode = 2
+size_flags_horizontal = 4
+color = Color(0.35, 0.78, 0.88, 0.5)
+
+[node name="Branches" type="MarginContainer" parent="TabContent/SkillsPanel/ScrollContainer/VBox"]
+layout_mode = 2
+theme_override_constants/margin_left = 28
+
+[node name="BranchesVBox" type="VBoxContainer" parent="TabContent/SkillsPanel/ScrollContainer/VBox/Branches"]
+layout_mode = 2
+theme_override_constants/separation = 10
+
+[node name="LabPanel" type="Control" parent="TabContent"]
+visible = false
+anchor_right = 1.0
+anchor_bottom = 1.0
+
+[node name="ScrollContainer" type="ScrollContainer" parent="TabContent/LabPanel"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = 8.0
+
+[node name="VBox" type="VBoxContainer" parent="TabContent/LabPanel/ScrollContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/separation = 10
+
+[node name="HeaderLabel" type="Label" parent="TabContent/LabPanel/ScrollContainer/VBox"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 24
+horizontal_alignment = 1
+text = "Lab Research"
+
+[node name="SubLabel" type="Label" parent="TabContent/LabPanel/ScrollContainer/VBox"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.6, 0.68, 0.74, 1)
+theme_override_font_sizes/font_size = 15
+horizontal_alignment = 1
+autowrap_mode = 2
+text = "Arcane research into the Void itself."
+
+[node name="LockedLabel" type="Label" parent="TabContent/LabPanel/ScrollContainer/VBox"]
+visible = false
+layout_mode = 2
+theme_override_colors/font_color = Color(0.85, 0.72, 0.42, 1)
+theme_override_font_sizes/font_size = 15
+horizontal_alignment = 1
+autowrap_mode = 2
+text = "Unlock Tier 2 to unlock the Lab."
+
+[node name="SwiftTidesButton" type="Button" parent="TabContent/LabPanel/ScrollContainer/VBox"]
+layout_mode = 2
+custom_minimum_size = Vector2(0, 58)
+icon = ExtResource("20")
+text = "Swift Tides — 90 Souls
+Voidborn waves rise sooner."
+
+[node name="OverchargeCoreButton" type="Button" parent="TabContent/LabPanel/ScrollContainer/VBox"]
+layout_mode = 2
+custom_minimum_size = Vector2(0, 58)
+icon = ExtResource("45")
+text = "Overcharge Core — 150 Souls
+Force more power through the Core, permanently."
+
+[node name="ResonantShellButton" type="Button" parent="TabContent/LabPanel/ScrollContainer/VBox"]
+layout_mode = 2
+custom_minimum_size = Vector2(0, 58)
+icon = ExtResource("46")
+text = "Resonant Shell — 130 Souls
+Layer the ancient stone against future harm."
+
+[node name="VoidsightButton" type="Button" parent="TabContent/LabPanel/ScrollContainer/VBox"]
+layout_mode = 2
+custom_minimum_size = Vector2(0, 58)
+icon = ExtResource("47")
+text = "Voidsight — 110 Souls
+See the Void before it arrives."
+
+[node name="QuickeningButton" type="Button" parent="TabContent/LabPanel/ScrollContainer/VBox"]
+layout_mode = 2
+custom_minimum_size = Vector2(0, 58)
+icon = ExtResource("48")
+text = "Quickening — 200 Souls
+Shave the space between heartbeats."
+
+[node name="GeneratedResearchVBox" type="VBoxContainer" parent="TabContent/LabPanel/ScrollContainer/VBox"]
+layout_mode = 2
+theme_override_constants/separation = 10
+
+[node name="MarketplacePanel" type="Control" parent="TabContent"]
+visible = false
+anchor_right = 1.0
+anchor_bottom = 1.0
+
+[node name="VBox" type="VBoxContainer" parent="TabContent/MarketplacePanel"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = 8.0
+theme_override_constants/separation = 10
+
+[node name="HeaderLabel" type="Label" parent="TabContent/MarketplacePanel/VBox"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 24
+horizontal_alignment = 1
+text = "Marketplace"
+
+[node name="SubLabel" type="Label" parent="TabContent/MarketplacePanel/VBox"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.6, 0.68, 0.74, 1)
+theme_override_font_sizes/font_size = 15
+horizontal_alignment = 1
+autowrap_mode = 2
+text = "Optional real-money purchases below. Everything else stays earnable through play."
+
+[node name="AutoRestartButton" type="Button" parent="TabContent/MarketplacePanel/VBox"]
+layout_mode = 2
+autowrap_mode = 3
+custom_minimum_size = Vector2(0, 58)
+icon = ExtResource("31")
+text = "Auto Restart
+Instantly begin a new run after the Keep falls."
+
+[node name="RemoveAdsButton" type="Button" parent="TabContent/MarketplacePanel/VBox"]
+layout_mode = 2
+autowrap_mode = 3
+custom_minimum_size = Vector2(0, 58)
+icon = ExtResource("10")
+text = "Remove Ads
+No more ad-watching — daily rewards are credited automatically."
+
+[node name="SkinVioletButton" type="Button" parent="TabContent/MarketplacePanel/VBox"]
+layout_mode = 2
+autowrap_mode = 3
+custom_minimum_size = Vector2(0, 58)
+icon = ExtResource("44")
+text = "Violet Core
+A violet glow for the Core. Purely cosmetic."
+
+[node name="SkinGoldButton" type="Button" parent="TabContent/MarketplacePanel/VBox"]
+layout_mode = 2
+autowrap_mode = 3
+custom_minimum_size = Vector2(0, 58)
+icon = ExtResource("44")
+text = "Golden Core
+A golden glow for the Core. Purely cosmetic."
+
+[node name="MilestonePassButton" type="Button" parent="TabContent/MarketplacePanel/VBox"]
+layout_mode = 2
+autowrap_mode = 3
+custom_minimum_size = Vector2(0, 58)
+icon = ExtResource("36")
+text = "Milestone Pass — 300 Souls
+Doubles every Milestone reward, forever."
+
+[node name="SkillPointAdButton" type="Button" parent="TabContent/MarketplacePanel/VBox"]
+layout_mode = 2
+autowrap_mode = 3
+custom_minimum_size = Vector2(0, 58)
+icon = ExtResource("32")
+text = "Watch an ad — +1 Skill Point
+Once per day."
+
+[node name="CoinAdButton" type="Button" parent="TabContent/MarketplacePanel/VBox"]
+layout_mode = 2
+autowrap_mode = 3
+custom_minimum_size = Vector2(0, 58)
+icon = ExtResource("33")
+text = "Watch an ad — +Souls
+Up to 5 times per day."
+
+[node name="BottomTabBar" type="Panel" parent="."]
+anchor_left = 0.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -92.0
+
+[node name="TabBar" type="HBoxContainer" parent="BottomTabBar"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 12.0
+offset_top = 8.0
+offset_right = -12.0
+offset_bottom = -8.0
+
+[node name="BattleTabButton" type="Button" parent="BottomTabBar/TabBar"]
+layout_mode = 2
+size_flags_horizontal = 3
+custom_minimum_size = Vector2(0, 60)
+toggle_mode = true
+alignment = 1
+icon_alignment = 1
+expand_icon = true
+button_pressed = true
+button_group = SubResource("ButtonGroup_tabs")
+icon = ExtResource("4")
+theme_override_constants/icon_max_width = 26
+
+[node name="UpgradesTabButton" type="Button" parent="BottomTabBar/TabBar"]
+layout_mode = 2
+size_flags_horizontal = 3
+custom_minimum_size = Vector2(0, 60)
+toggle_mode = true
+alignment = 1
+icon_alignment = 1
+expand_icon = true
+button_group = SubResource("ButtonGroup_tabs")
+icon = ExtResource("5")
+theme_override_constants/icon_max_width = 26
+
+[node name="SkillsTabButton" type="Button" parent="BottomTabBar/TabBar"]
+layout_mode = 2
+size_flags_horizontal = 3
+custom_minimum_size = Vector2(0, 60)
+toggle_mode = true
+alignment = 1
+icon_alignment = 1
+expand_icon = true
+button_group = SubResource("ButtonGroup_tabs")
+icon = ExtResource("6")
+theme_override_constants/icon_max_width = 26
+
+[node name="LabTabButton" type="Button" parent="BottomTabBar/TabBar"]
+layout_mode = 2
+size_flags_horizontal = 3
+custom_minimum_size = Vector2(0, 60)
+toggle_mode = true
+alignment = 1
+icon_alignment = 1
+expand_icon = true
+button_group = SubResource("ButtonGroup_tabs")
+icon = ExtResource("7")
+theme_override_constants/icon_max_width = 26
+
+[node name="MarketplaceTabButton" type="Button" parent="BottomTabBar/TabBar"]
+layout_mode = 2
+size_flags_horizontal = 3
+custom_minimum_size = Vector2(0, 60)
+toggle_mode = true
+alignment = 1
+icon_alignment = 1
+expand_icon = true
+button_group = SubResource("ButtonGroup_tabs")
+icon = ExtResource("8")
+theme_override_constants/icon_max_width = 26
+
+[node name="MenuPopup" type="PopupPanel" parent="."]
+size = Vector2i(260, 412)
+
+[node name="VBox" type="VBoxContainer" parent="MenuPopup"]
+offset_left = 12.0
+offset_top = 12.0
+offset_right = 248.0
+offset_bottom = 400.0
+theme_override_constants/separation = 8
+
+[node name="TitleLabel" type="Label" parent="MenuPopup/VBox"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 20
+horizontal_alignment = 1
+text = "Menu"
+
+[node name="MissionsButton" type="Button" parent="MenuPopup/VBox"]
+layout_mode = 2
+custom_minimum_size = Vector2(0, 48)
+icon = ExtResource("35")
+text = "Daily Missions"
+
+[node name="MilestonesButton" type="Button" parent="MenuPopup/VBox"]
+layout_mode = 2
+custom_minimum_size = Vector2(0, 48)
+icon = ExtResource("36")
+text = "Milestones"
+
+[node name="SettingsButton" type="Button" parent="MenuPopup/VBox"]
+layout_mode = 2
+custom_minimum_size = Vector2(0, 48)
+icon = ExtResource("27")
+text = "Settings"
+
+[node name="ReplayIntroButton" type="Button" parent="MenuPopup/VBox"]
+layout_mode = 2
+custom_minimum_size = Vector2(0, 48)
+icon = ExtResource("21")
+text = "Replay Intro"
+
+[node name="ResetButton" type="Button" parent="MenuPopup/VBox"]
+layout_mode = 2
+custom_minimum_size = Vector2(0, 48)
+icon = ExtResource("22")
+text = "Reset Progress"
+
+[node name="LicenseButton" type="Button" parent="MenuPopup/VBox"]
+layout_mode = 2
+custom_minimum_size = Vector2(0, 48)
+icon = ExtResource("24")
+text = "License & Credits"
+
+[node name="LicensePopup" type="PopupPanel" parent="."]
+size = Vector2i(320, 460)
+
+[node name="VBox" type="VBoxContainer" parent="LicensePopup"]
+offset_left = 14.0
+offset_top = 14.0
+offset_right = 306.0
+offset_bottom = 446.0
+theme_override_constants/separation = 10
+
+[node name="TitleLabel" type="Label" parent="LicensePopup/VBox"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 20
+horizontal_alignment = 1
+text = "License & Credits"
+
+[node name="ScrollContainer" type="ScrollContainer" parent="LicensePopup/VBox"]
+custom_minimum_size = Vector2(0, 340)
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="CreditsLabel" type="Label" parent="LicensePopup/VBox/ScrollContainer"]
+custom_minimum_size = Vector2(292, 0)
+layout_mode = 2
+theme_override_colors/font_color = Color(0.75, 0.8, 0.84, 1)
+theme_override_font_sizes/font_size = 14
+autowrap_mode = 2
+text = "AscendKeep is built with Godot Engine 4.7 (MIT License, godotengine.org).
+
+Icons: Lucide (lucide.dev), ISC License. Full list in assets/icons/CREDITS.md.
+
+In-battle sprites (the Core, the Voidborn, the projectile): original artwork made for this game, generated from prompts stored in prompt/*.json — not from any third-party pack.
+
+Sound effects: Kenney (Interface Sounds, CC0) and artisticdude (RPG Sound Pack, CC0), via OpenGameArt.
+
+Ads: optional rewarded videos from Google AdMob, shown only when you tap \"Watch an ad\". Purchases: optional, through Google Play. Cloud save: an anonymous Firebase account, Google sign-in is optional. No other analytics or tracking."
+
+[node name="CloseButton" type="Button" parent="LicensePopup/VBox"]
+layout_mode = 2
+custom_minimum_size = Vector2(0, 44)
+text = "Close"
+
+[node name="SettingsPopup" type="PopupPanel" parent="."]
+size = Vector2i(280, 380)
+
+[node name="VBox" type="VBoxContainer" parent="SettingsPopup"]
+offset_left = 14.0
+offset_top = 14.0
+offset_right = 266.0
+offset_bottom = 366.0
+theme_override_constants/separation = 10
+
+[node name="TitleLabel" type="Label" parent="SettingsPopup/VBox"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 20
+horizontal_alignment = 1
+text = "Settings"
+
+[node name="SfxCheck" type="CheckButton" parent="SettingsPopup/VBox"]
+layout_mode = 2
+custom_minimum_size = Vector2(0, 44)
+button_pressed = true
+icon = ExtResource("28")
+text = "Sound Effects"
+
+[node name="MusicCheck" type="CheckButton" parent="SettingsPopup/VBox"]
+layout_mode = 2
+custom_minimum_size = Vector2(0, 44)
+button_pressed = true
+icon = ExtResource("29")
+text = "Music"
+
+[node name="VibrationCheck" type="CheckButton" parent="SettingsPopup/VBox"]
+layout_mode = 2
+custom_minimum_size = Vector2(0, 44)
+button_pressed = true
+icon = ExtResource("30")
+text = "Vibration"
+
+[node name="AutoRestartCheck" type="CheckButton" parent="SettingsPopup/VBox"]
+layout_mode = 2
+custom_minimum_size = Vector2(0, 44)
+disabled = true
+icon = ExtResource("31")
+text = "Auto Restart (buy in Marketplace)"
+
+[node name="GoogleSignInButton" type="Button" parent="SettingsPopup/VBox"]
+layout_mode = 2
+custom_minimum_size = Vector2(0, 44)
+text = "Sign in with Google"
+
+[node name="CloseButton" type="Button" parent="SettingsPopup/VBox"]
+layout_mode = 2
+custom_minimum_size = Vector2(0, 44)
+text = "Close"
+
+[node name="MissionsPopup" type="PopupPanel" parent="."]
+size = Vector2i(300, 420)
+
+[node name="VBox" type="VBoxContainer" parent="MissionsPopup"]
+offset_left = 14.0
+offset_top = 14.0
+offset_right = 286.0
+offset_bottom = 406.0
+theme_override_constants/separation = 10
+
+[node name="TitleLabel" type="Label" parent="MissionsPopup/VBox"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 20
+horizontal_alignment = 1
+text = "Daily Missions"
+
+[node name="SubLabel" type="Label" parent="MissionsPopup/VBox"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.6, 0.68, 0.74, 1)
+theme_override_font_sizes/font_size = 13
+horizontal_alignment = 1
+autowrap_mode = 2
+text = "Progress carries across every run played today."
+
+[node name="Mission1Button" type="Button" parent="MissionsPopup/VBox"]
+layout_mode = 2
+custom_minimum_size = Vector2(0, 58)
+icon = ExtResource("35")
+
+[node name="Mission2Button" type="Button" parent="MissionsPopup/VBox"]
+layout_mode = 2
+custom_minimum_size = Vector2(0, 58)
+icon = ExtResource("35")
+
+[node name="Mission3Button" type="Button" parent="MissionsPopup/VBox"]
+layout_mode = 2
+custom_minimum_size = Vector2(0, 58)
+icon = ExtResource("35")
+
+[node name="RerollButton" type="Button" parent="MissionsPopup/VBox"]
+layout_mode = 2
+custom_minimum_size = Vector2(0, 44)
+icon = ExtResource("21")
+text = "Reroll Missions"
+
+[node name="CloseButton" type="Button" parent="MissionsPopup/VBox"]
+layout_mode = 2
+custom_minimum_size = Vector2(0, 44)
+text = "Close"
+
+[node name="MilestonesPopup" type="PopupPanel" parent="."]
+size = Vector2i(300, 480)
+
+[node name="VBox" type="VBoxContainer" parent="MilestonesPopup"]
+offset_left = 14.0
+offset_top = 14.0
+offset_right = 286.0
+offset_bottom = 466.0
+theme_override_constants/separation = 10
+
+[node name="TitleLabel" type="Label" parent="MilestonesPopup/VBox"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 20
+horizontal_alignment = 1
+text = "Milestones"
+
+[node name="SubLabel" type="Label" parent="MilestonesPopup/VBox"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.6, 0.68, 0.74, 1)
+theme_override_font_sizes/font_size = 13
+horizontal_alignment = 1
+autowrap_mode = 2
+text = "Permanent rewards for the highest wave you've ever reached."
+
+[node name="ScrollContainer" type="ScrollContainer" parent="MilestonesPopup/VBox"]
+custom_minimum_size = Vector2(0, 320)
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="MilestonesVBox" type="VBoxContainer" parent="MilestonesPopup/VBox/ScrollContainer"]
+custom_minimum_size = Vector2(264, 0)
+layout_mode = 2
+theme_override_constants/separation = 8
+
+[node name="Milestone5Button" type="Button" parent="MilestonesPopup/VBox/ScrollContainer/MilestonesVBox"]
+layout_mode = 2
+custom_minimum_size = Vector2(0, 50)
+icon = ExtResource("36")
+
+[node name="Milestone10Button" type="Button" parent="MilestonesPopup/VBox/ScrollContainer/MilestonesVBox"]
+layout_mode = 2
+custom_minimum_size = Vector2(0, 50)
+icon = ExtResource("36")
+
+[node name="Milestone15Button" type="Button" parent="MilestonesPopup/VBox/ScrollContainer/MilestonesVBox"]
+layout_mode = 2
+custom_minimum_size = Vector2(0, 50)
+icon = ExtResource("36")
+
+[node name="Milestone20Button" type="Button" parent="MilestonesPopup/VBox/ScrollContainer/MilestonesVBox"]
+layout_mode = 2
+custom_minimum_size = Vector2(0, 50)
+icon = ExtResource("36")
+
+[node name="Milestone30Button" type="Button" parent="MilestonesPopup/VBox/ScrollContainer/MilestonesVBox"]
+layout_mode = 2
+custom_minimum_size = Vector2(0, 50)
+icon = ExtResource("36")
+
+[node name="Milestone40Button" type="Button" parent="MilestonesPopup/VBox/ScrollContainer/MilestonesVBox"]
+layout_mode = 2
+custom_minimum_size = Vector2(0, 50)
+icon = ExtResource("36")
+
+[node name="Milestone50Button" type="Button" parent="MilestonesPopup/VBox/ScrollContainer/MilestonesVBox"]
+layout_mode = 2
+custom_minimum_size = Vector2(0, 50)
+icon = ExtResource("36")
+
+[node name="CloseButton" type="Button" parent="MilestonesPopup/VBox"]
+layout_mode = 2
+custom_minimum_size = Vector2(0, 44)
+text = "Close"
+
+[node name="IntroOverlay" type="Control" parent="."]
+visible = false
+anchor_right = 1.0
+anchor_bottom = 1.0
+
+[node name="Dim" type="ColorRect" parent="IntroOverlay"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+color = Color(0.02, 0.02, 0.04, 0.97)
+
+[node name="IntroLabel" type="Label" parent="IntroOverlay"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -300.0
+offset_top = -40.0
+offset_right = 300.0
+offset_bottom = 40.0
+theme_override_font_sizes/font_size = 24
+horizontal_alignment = 1
+autowrap_mode = 2
+text = "The world was consumed by the Void."
+
+[node name="SkipButton" type="Button" parent="IntroOverlay"]
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -140.0
+offset_top = -80.0
+offset_right = -24.0
+offset_bottom = -24.0
+text = "Skip"
+
+[node name="IntroTimer" type="Timer" parent="."]
+one_shot = true

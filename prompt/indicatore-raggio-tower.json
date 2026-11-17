@@ -1,0 +1,16 @@
+Create a seamless circular tower attack-range indicator for AscendKeep.
+
+Design:
+
+* extremely subtle cyan circular boundary;
+* transparent inner area;
+* faint arcane markings at four symmetrical points;
+* soft fading outer edge;
+* designed to be placed under the tower;
+* no opaque fill;
+* no text;
+* no numbers;
+* no environment;
+* minimal enough not to distract from combat.
+
+[INCLUDE ASCENDKEEP VISUAL STYLE BIBLE]

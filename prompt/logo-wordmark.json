@@ -1,0 +1,23 @@
+Create the AscendKeep logo wordmark — the game's title treatment, shown at the top of the home splash screen above the tower artwork.
+
+This is a typographic logo, not a scene or illustration.
+
+Text: "ASCEND KEEP" (two words, exactly as written, no subtitle, no tagline).
+
+Design:
+
+* engraved ancient-stone rune aesthetic — letterforms look carved or etched into old stone, not printed or digital;
+* tall, narrow, slightly condensed serif/gothic letterforms, sharp angular strokes, evoking a last-bastion / dark-fantasy tower inscription;
+* a thin cyan magical glow traces the inner edges of the letters, as if arcane energy is lit from within the stone carving — the same cyan as the tower's core glow;
+* faint hairline cracks running through a few letters, subtle, not breaking legibility;
+* muted antique gold used sparingly as a secondary accent (e.g. a thin line above/below the wordmark), never as the main letter color;
+* uppercase only.
+
+Composition:
+
+* horizontal wordmark, wider than tall, centered;
+* transparent background — must sit cleanly over a near-black app background with no visible seam or box;
+* no border, no frame, no watermark, no additional text, no subtitle, no icon, no tower illustration (the tower artwork is a separate asset placed below this logo);
+* generous transparent padding left and right so the wordmark can be scaled without clipping.
+
+[INCLUDE ASCENDKEEP VISUAL STYLE BIBLE — palette rules apply (near-black/navy base, cyan magical energy, antique gold accents), but this asset is exempt from the sprite-composition rules (single subject, top-down view, no text) since it is a text logotype, not a gameplay sprite.]

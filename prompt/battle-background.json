@@ -1,0 +1,23 @@
+Create the AscendKeep battle screen background — the full-screen backdrop shown behind the Core, the Voidborn and the projectiles during an actual run.
+
+This is not a tileable texture swatch (see arena-background.json for that). This is a single fixed portrait image, framed exactly for the game's play area, sitting behind everything else — it must never distract from or compete with the gameplay sprites on top of it.
+
+Design:
+
+* true top-down orthographic view, matching the camera the Core and Voidborn are drawn in;
+* a circular ancient stone arena fills most of the frame, centered, large enough that Voidborn walking in from its edge toward the middle read as standing on solid ground;
+* cracked, weathered stone floor, desaturated gray, with subtle circular architectural rings radiating outward from the center like ripples;
+* extremely faint cyan runes embedded in the stone, only visible up close, never competing with the Core's own glow at the center;
+* the outermost edge of the arena fades into near-black Void — no visible horizon, no walls, no sky;
+* the very center, where the Core itself will be placed by the game, must be kept plain and slightly darker so the Core sprite reads clearly on top of it;
+* extremely restrained detail overall — this sits *behind* moving gameplay objects, so it must never be busy or high-contrast enough to hurt readability.
+
+Composition:
+
+* portrait orientation, 720×1280 (9:16), no cropping needed for this exact frame;
+* the top ~80px strip and bottom ~110px strip of the frame (where the HUD bars sit) should be the darkest, plainest part of the image — near-black, minimal detail — so UI text stays legible over it;
+* no tower, no Core, no Voidborn, no projectiles, no characters;
+* no UI, no text, no logo, no frame, no watermark;
+* no directional lighting, no lens effects, no vignette stronger than the natural darkening toward the Void at the edges.
+
+[INCLUDE ASCENDKEEP VISUAL STYLE BIBLE]

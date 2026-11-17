@@ -1,0 +1,25 @@
+Create the basic Voidborn enemy called Voidling.
+
+Gameplay role:
+
+* common melee enemy;
+* weak;
+* appears in large groups;
+* walks directly toward the tower.
+
+Design:
+
+* compact shadow creature viewed directly from above;
+* dark rounded armored body;
+* four short claw-like limbs arranged for clear radial movement;
+* small violet glowing core at the center;
+* subtle jagged silhouette;
+* no visible face;
+* no humanoid anatomy;
+* no weapon;
+* rotationally readable so the sprite can be rotated toward the tower in Godot;
+* simple enough to display in large numbers.
+
+The Voidling must feel hostile but visually subordinate to stronger enemies.
+
+[INCLUDE ASCENDKEEP VISUAL STYLE BIBLE]

@@ -1,0 +1,66 @@
+# ASCENDKEEP — VISUAL STYLE BIBLE
+
+Use the following visual direction consistently for every generated asset.
+
+Dark fantasy minimalist 2D mobile game art, true top-down orthographic view, centered single subject, strong readable silhouette, compact proportions, slightly stylized hand-painted rendering, clean geometric shapes, restrained details, ancient stone and arcane energy aesthetic.
+
+Color palette:
+
+* near-black and deep navy shadows;
+* desaturated stone gray;
+* cyan and pale blue magical energy;
+* muted antique gold for important details;
+* violet energy for elite enemies;
+* crimson only for danger, damage and corrupted states.
+
+Lighting:
+
+* soft light from directly above;
+* subtle cyan magical rim light;
+* controlled contrast;
+* no dramatic background lighting;
+* no realistic cast environment shadows.
+
+Rendering:
+
+* polished mobile game sprite;
+* clean edges;
+* subtle painted texture;
+* no pixel art;
+* no photorealism;
+* no 3D render appearance;
+* no excessive micro-details;
+* readable at 64×64 pixels;
+* transparent background;
+* generous transparent padding around the subject.
+
+Composition:
+
+* one isolated subject;
+* perfectly centered;
+* entire object visible;
+* no cropping;
+* no scenery;
+* no floor;
+* no interface;
+* no text;
+* no border;
+* no frame;
+* no watermark.
+
+The asset must visually belong to the same game as all other AscendKeep sprites.
+
+NEGATIVE REQUIREMENTS:
+
+Do not use an isometric perspective.
+Do not use a side view.
+Do not use a front-facing portrait view.
+Do not add scenery or a painted background.
+Do not add text, labels, numbers or interface elements.
+Do not create cartoon comedy proportions.
+Do not use bright saturated rainbow colors.
+Do not use anime aesthetics.
+Do not use photorealistic materials.
+Do not create an elaborate illustration.
+Do not crop the subject.
+Do not add multiple objects unless explicitly requested.

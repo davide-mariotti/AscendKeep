@@ -1,0 +1,23 @@
+Create the AscendKeep app icon — the square image used as the game's launcher icon on the phone home screen and store listing.
+
+This is not a gameplay sprite and not cover art. It must read instantly as a tiny thumbnail (down to 48×48px) and work as a recognizable brand mark.
+
+Design:
+
+* Ascend Keep itself as the sole subject: a single circular stone tower, front-on silhouette, seen from a slight low angle so it reads as tall and imposing even when small;
+* the tower fills most of the frame, top to bottom, with only slight padding — icons get cropped/scaled aggressively by OS launchers, do not leave large empty margins;
+* a bright cyan core glow at the tower's midsection or crown, strong enough to stay legible at icon size;
+* faint cracks of pale violet-black Void energy creeping up the tower's base, subtle, not covering more than the lower third;
+* bold, simple silhouette — a viewer must recognize "tower" in under a second even blurred or scaled down;
+* background: solid near-black or deep navy gradient, no scenery, no horizon line, no floating debris — keep the background nearly flat so the tower silhouette pops.
+
+Mood: ominous, ancient, defiant — a last bastion, not a cute mascot.
+
+Composition:
+
+* perfectly centered, square 1:1 canvas;
+* single subject, no characters, no enemies, no Voidborn;
+* no text, no letters, no numbers, no logo wordmark, no UI, no frame, no border, no watermark (the OS applies its own icon mask/border);
+* flat or near-flat background, safe zone: keep the tower's most important silhouette details within the center 80% of the canvas since adaptive icons crop the outer edge.
+
+[INCLUDE ASCENDKEEP VISUAL STYLE BIBLE — palette and rendering rules apply, but this asset is exempt from the "top-down only / transparent background / generous padding" sprite rules, since it is an app icon, not a gameplay sprite.]

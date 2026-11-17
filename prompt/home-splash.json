@@ -1,0 +1,26 @@
+Create the AscendKeep home screen hero image — the illustration shown above the BATTLE button, the player's very first impression of the game.
+
+This is not a gameplay sprite. It is the game's cover portrait: it must convey scale, isolation and quiet dread rather than function as a readable top-down game object.
+
+Design:
+
+* Ascend Keep shown as a small, distant silhouette — a lone circular tower standing on a fragment of cracked stone, suspended in the endless Void;
+* the tower itself is dwarfed by the surrounding darkness, emphasizing that it is the last thing left;
+* a faint cyan glow pulses from the tower's core, the only significant light source in the image;
+* wisps of pale violet-black Void energy drift around the lower edges, never touching the tower directly;
+* a few tiny distant motes of cyan light suggest stars or dying embers, sparse and restrained;
+* strong vertical composition, tower roughly centered, generous dark negative space above and around it;
+* soft light falls only from the tower's own core glow, nothing else is lit;
+* no ground plane extending to the frame edges — the stone fragment the tower stands on should read as floating, finite, alone.
+
+Mood: quiet, ancient, resilient, melancholic — a last light in the dark, not an action pose.
+
+Composition:
+
+* portrait orientation, taller than wide (this fills a vertical panel above a button);
+* single unmistakable focal point (the tower's glow);
+* no characters, no enemies, no Voidborn;
+* no text, no logo, no UI, no frame, no watermark;
+* transparent or near-black background — must sit cleanly over a near-black app background without a visible seam.
+
+[INCLUDE ASCENDKEEP VISUAL STYLE BIBLE — palette and rendering rules apply, but this asset is exempt from the "no scenery / single isolated subject / top-down only" sprite rules, since it is cover art, not a gameplay sprite.]
