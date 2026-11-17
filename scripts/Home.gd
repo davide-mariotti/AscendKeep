@@ -230,6 +230,28 @@ func _ready() -> void:
 	google_sign_in_button.pressed.connect(func(): Backend.sign_in_with_google())
 	Backend.signed_in.connect(func(_uid): _update_google_sign_in_button())
 	settings_popup.about_to_popup.connect(_update_google_sign_in_button)
+	# Players who had to give ad consent (EEA, UK) can change it whenever they want: Google UMP requires this entry point.
+	var privacy_button := Button.new()
+	privacy_button.text = "Privacy choices"
+	privacy_button.custom_minimum_size = Vector2(0, 44)
+	privacy_button.pressed.connect(Ads.show_privacy_options)
+	$SettingsPopup/VBox.add_child(privacy_button)
+	$SettingsPopup/VBox.move_child(privacy_button, $SettingsPopup/VBox/CloseButton.get_index())
+	settings_popup.about_to_popup.connect(func(): privacy_button.visible = Ads.privacy_options_required())
+	privacy_button.visible = false
+	# The cloud save ID: what the privacy policy asks for when someone wants their online save deleted.
+	var save_id_label := Label.new()
+	save_id_label.add_theme_font_size_override("font_size", 12)
+	save_id_label.add_theme_color_override("font_color", Color(0.6, 0.65, 0.7, 1))
+	save_id_label.autowrap_mode = TextServer.AUTOWRAP_ARBITRARY
+	save_id_label.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
+	$SettingsPopup/VBox.add_child(save_id_label)
+	$SettingsPopup/VBox.move_child(save_id_label, $SettingsPopup/VBox/CloseButton.get_index())
+	settings_popup.about_to_popup.connect(func():
+		save_id_label.text = "Cloud save ID: %s" % Backend.signed_in_user_id
+		save_id_label.visible = Backend.signed_in_user_id != ""
+	)
+	save_id_label.visible = false
 
 	$IntroOverlay/SkipButton.pressed.connect(_skip_intro)
 	intro_timer.timeout.connect(_on_intro_timer_timeout)
