@@ -35,7 +35,7 @@ Gli ID sono quelli di `Meta.REAL_MONEY_PRODUCTS`. Il gioco conferma gli acquisti
 
 - **Gioco**: consenso UMP prima degli annunci (`scripts/Ads.gd`), "Privacy choices", "Privacy policy" e "Cloud save ID" nelle Impostazioni.
 - **Scheda dello Store** EN + IT (testi in `store/listing.json`, grafica in `store/`). Categoria Strategia, contatti: email e pagina dell'app sul sito.
-  Immagine in primo piano e screenshot dichiarati "creati con l'AI" (le illustrazioni vengono dai prompt), icona no.
+  Icona (la torre illustrata, dal 18/11, anche per l'italiano), immagine in primo piano e screenshot dichiarati "creati con l'AI": le illustrazioni vengono dai prompt.
 - **Contenuti app**: tutte e 10 le dichiarazioni.
   - Accesso: nessuna restrizione. Il gioco parte senza login e si gioca tutto senza pagare.
   - Annunci: sì. ID pubblicità usato per annunci e antifrode.
@@ -49,7 +49,6 @@ Le modifiche a scheda e dichiarazioni sono salvate ma **non ancora inviate in re
 
 ## Da fare, in ordine
 
-0. Nella scheda dello Store sostituire l'icona con la nuova `store/icon-512.png` (la torre illustrata) e salvare.
 1. **Build 0.1.1** (versionCode 2):
    - `USE_TEST_ADS := false` in `scripts/Ads.gd`;
    - `version/code=2` e `version/name="0.1.1"` in `export_presets.cfg`;
