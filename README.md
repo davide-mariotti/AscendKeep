@@ -14,9 +14,9 @@
 </p>
 
 <p align="center">
-  <img src="docs/screenshots/home.png" width="220" alt="The Keep, home screen">
-  <img src="docs/screenshots/upgrades.png" width="220" alt="Reconstruction upgrades">
-  <img src="docs/screenshots/battle.png" width="220" alt="A wave of Voidborn">
+  <img src="docs/store/screenshots/1-home.png" width="220" alt="The Keep, home screen">
+  <img src="docs/store/screenshots/2-upgrades.png" width="220" alt="Reconstruction upgrades">
+  <img src="docs/store/screenshots/4-battle.png" width="220" alt="A wave of Voidborn">
 </p>
 
 ---
@@ -41,7 +41,7 @@ and each time the Voidborn tear it down it absorbs their Souls and comes back st
 
 - It doesn't show ads unless you tap "Watch an ad": the only ads are optional rewarded videos (Google AdMob).
 - It doesn't sell power you can't earn by playing. The real-money items are Auto Restart, Remove Ads and two cosmetic Core skins.
-- It doesn't run on iOS yet (it would need a Mac), and it isn't on the Play Store yet.
+- It doesn't run on iOS yet (it would need a Mac), and it isn't on the Play Store yet (an internal test is running).
 - It doesn't collect analytics or track you beyond what AdMob and Firebase need to work.
 - It doesn't end. There are 100 tiers. Good luck.
 
@@ -50,8 +50,8 @@ and each time the Voidborn tear it down it absorbs their Souls and comes back st
 1. Install [Godot 4.7](https://godotengine.org/download) (standard, not .NET).
 2. Open `project.godot` and press F5. On desktop, ads are replaced by the AdMob plugin's mock overlay and purchases do nothing.
 3. Cloud save needs a Firebase config in `addons/godot-firebase/.env` (not in the repo: it holds the project keys).
-4. For a real Android build: Android SDK and JDK, the AdMob native packages (`Project → Tools → AdMob Manager`) and, to sell anything,
-   the four in-app products on Play Console. Everything is written down in [docs/DESIGN.md](docs/DESIGN.md).
+4. For a real Android build: Android SDK and JDK, the AdMob native packages (`Project → Tools → AdMob Manager`) and your own upload key.
+   Where the Play Store release stands is in [docs/RELEASE.md](docs/RELEASE.md) (Italian).
 
 ### How it's organised
 
@@ -60,8 +60,7 @@ scenes/       Home (the hub with five tabs) and Main (the battle), Enemy, Projec
 scripts/      gameplay (Main, Tower, Enemy, Projectile), progression and save (Meta), Audio, Ads, Purchases, Backend
 ui/           the shared theme (UITheme.tres): dark navy, cyan Core glow, Geist font
 assets/       icons (Lucide), sprites, art, audio, fonts, app icon (assets/art/app-icon/, built by make-icons.py)
-prompt/       the prompts used to generate the artwork
-docs/         design notes, competitor analysis, screenshots
+docs/         design notes, release status, Play Store assets, art sources and the prompts behind the artwork
 ```
 
 ### Credits
@@ -102,7 +101,7 @@ e ogni volta che i Voidborn la abbattono assorbe le loro Souls e torna più fort
 
 - Non mostra pubblicità se non tocchi "Watch an ad": le uniche sono video premiati facoltativi (Google AdMob).
 - Non vende potenza che non puoi guadagnare giocando. Gli acquisti veri sono Auto Restart, Remove Ads e due skin estetiche del Core.
-- Non gira ancora su iOS (servirebbe un Mac) e non è ancora sul Play Store.
+- Non gira ancora su iOS (servirebbe un Mac) e non è ancora sul Play Store (è partito un test interno).
 - Non raccoglie statistiche né ti traccia oltre quello che serve ad AdMob e Firebase per funzionare.
 - Non finisce. I tier sono 100. In bocca al lupo.
 
@@ -111,8 +110,8 @@ e ogni volta che i Voidborn la abbattono assorbe le loro Souls e torna più fort
 1. Installa [Godot 4.7](https://godotengine.org/download) (versione standard, non .NET).
 2. Apri `project.godot` e premi F5. Su PC le pubblicità sono sostituite dalla finta pubblicità del plugin AdMob e gli acquisti non fanno nulla.
 3. Il salvataggio online vuole la configurazione Firebase in `addons/godot-firebase/.env` (non è nella repo: contiene le chiavi del progetto).
-4. Per una build Android vera: Android SDK e JDK, i pacchetti nativi di AdMob (`Project → Tools → AdMob Manager`) e, per vendere,
-   i quattro prodotti in-app su Play Console. È tutto scritto in [docs/DESIGN.md](docs/DESIGN.md).
+4. Per una build Android vera: Android SDK e JDK, i pacchetti nativi di AdMob (`Project → Tools → AdMob Manager`) e una chiave di caricamento tua.
+   A che punto è l'uscita sul Play Store è scritto in [docs/RELEASE.md](docs/RELEASE.md).
 
 ### Com'è organizzato
 
@@ -121,8 +120,7 @@ scenes/       Home (l'hub con cinque schede) e Main (la battaglia), Enemy, Proje
 scripts/      gameplay (Main, Tower, Enemy, Projectile), progressione e salvataggio (Meta), Audio, Ads, Purchases, Backend
 ui/           il tema condiviso (UITheme.tres): blu notte, bagliore ciano del Core, font Geist
 assets/       icone (Lucide), sprite, illustrazioni, audio, font, icona dell'app (assets/art/app-icon/, generata da make-icons.py)
-prompt/       i prompt usati per generare le illustrazioni
-docs/         note di design, analisi della concorrenza, schermate
+docs/         note di design, stato dell'uscita, grafica dello Store, sorgenti delle illustrazioni e i prompt usati per generarle
 ```
 
 ### Riconoscimenti

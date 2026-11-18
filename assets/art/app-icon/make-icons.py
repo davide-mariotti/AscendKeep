@@ -1,65 +1,46 @@
-"""Builds AscendKeep's app icon from the dm. app-icon template (same family as Sentinel and my site).
+"""Builds AscendKeep's app icon and the Android adaptive-icon layers from the illustrated tower.
 
-Template: 512 rounded square (rx 112), one Lucide glyph in white (here "castle", Lucide 1.74.0, ISC),
-the app's own colour (void violet #5b21b6), the dm. dot in the corner.
-Also writes the three Android adaptive-icon layers (432 px, glyph inside the 66% safe zone).
+Sources (not packed in the game, docs/ is ignored by Godot):
+- docs/art-source/icon-1024.png         the full icon, tower on its dark background
+- docs/art-source/tower-transparent.png the same tower alone, transparent background
 
-Needs Chrome (renders the SVG) and Pillow. Run from the repo root: python assets/art/app-icon/make-icons.py
+Outputs, next to this script:
+- icon.png                 512, launcher icon for old Android and the project icon
+- adaptive-foreground.png  432, the tower: crown inside the 66% safe zone, base running off the bottom like the full icon
+- adaptive-background.png  432, the dark backdrop with a soft cyan glow behind the core
+- adaptive-monochrome.png  432, white silhouette for themed icons (Android 13+)
+
+The site uses a different, Lucide-style icon (same family as the other apps): this one is the game's own.
+Needs Pillow. Run from the repo root: python assets/art/app-icon/make-icons.py
 """
-import base64, pathlib, subprocess, tempfile
-from PIL import Image
+import pathlib
+from PIL import Image, ImageDraw, ImageFilter
 
+ROOT = pathlib.Path(__file__).resolve().parents[3]
 HERE = pathlib.Path(__file__).parent
-CHROME = r"C:\Program Files\Google\Chrome\Application\chrome.exe"
-COLOR = "#5b21b6"
-CASTLE = ('<path d="M10 5V3"/><path d="M14 5V3"/><path d="M15 21v-3a3 3 0 0 0-6 0v3"/><path d="M18 3v8"/>'
-          '<path d="M18 5H6"/><path d="M22 11H2"/><path d="M22 9v10a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V9"/><path d="M6 3v8"/>')
-DOT = '<circle cx="432" cy="432" r="20" fill="#020402"/>'
+SRC = ROOT / "docs/art-source"
+N = 432                # adaptive layer size
+SAFE_TOP = 100         # crown top: inside the 264 px safe circle centred in the layer
 
+Image.open(SRC / "icon-1024.png").convert("RGB").resize((512, 512), Image.LANCZOS).save(HERE / "icon.png", optimize=True)
 
-def glyph(box, stroke, size=512):
-    off = (size - box) / 2
-    return (f'<g transform="translate({off} {off}) scale({box / 24})" fill="none" stroke="#fff" '
-            f'stroke-width="{stroke}" stroke-linecap="round" stroke-linejoin="round">{CASTLE}</g>')
+tower = Image.open(SRC / "tower-transparent.png").convert("RGBA")
+tower = tower.crop(tower.getbbox())
+scale = (N - SAFE_TOP) / tower.height
+tower = tower.resize((round(tower.width * scale), N - SAFE_TOP), Image.LANCZOS)
+fg = Image.new("RGBA", (N, N), (0, 0, 0, 0))
+fg.alpha_composite(tower, ((N - tower.width) // 2, SAFE_TOP))
+fg.save(HERE / "adaptive-foreground.png", optimize=True)
 
+# Background: the icon's navy, lighter in the middle, plus a blurred cyan glow where the core sits.
+bg = Image.new("RGB", (N, N), (13, 17, 28))
+glow = Image.new("L", (N, N), 0)
+ImageDraw.Draw(glow).ellipse((N * 0.18, N * 0.12, N * 0.82, N * 0.76), fill=255)
+glow = glow.filter(ImageFilter.GaussianBlur(N * 0.12))
+bg = Image.composite(Image.new("RGB", (N, N), (24, 46, 62)), bg, glow)
+bg.save(HERE / "adaptive-background.png", optimize=True)
 
-def svg(inner, size=512):
-    return f'<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 {size} {size}">{inner}</svg>'
-
-
-ICON = svg(f'<rect width="512" height="512" rx="112" fill="{COLOR}"/>{glyph(300, 2.3)}{DOT}')
-# adaptive layers, 432 px canvas: the launcher crops to a circle/squircle of ~66%, so the glyph stays inside ~200 px
-FOREGROUND = svg(glyph(196, 2.5, 432), 432)
-BACKGROUND = svg(f'<rect width="432" height="432" fill="{COLOR}"/>', 432)
-MONOCHROME = FOREGROUND
-
-
-def render(jobs):
-    """jobs: list of (svg, px) -> RGBA images, one Chrome screenshot for all."""
-    x, cells = 0, []
-    for s, px in jobs:
-        cells.append(f'<img style="position:absolute;left:{x}px;top:0;width:{px}px;height:{px}px" '
-                     f'src="data:image/svg+xml;base64,{base64.b64encode(s.encode()).decode()}">')
-        x += px + 8
-    with tempfile.TemporaryDirectory() as tmp:
-        page, shot = pathlib.Path(tmp, "p.html"), pathlib.Path(tmp, "s.png")
-        page.write_text(f'<body style="margin:0;background:transparent">{"".join(cells)}</body>', encoding="utf-8")
-        subprocess.run([CHROME, "--headless=new", "--disable-gpu", "--hide-scrollbars", "--force-device-scale-factor=1",
-                        "--default-background-color=00000000", f"--user-data-dir={tmp}/profile",
-                        f"--window-size={x},{max(p for _, p in jobs)}", f"--screenshot={shot}", page.as_uri()],
-                       check=True, capture_output=True)
-        sheet = Image.open(shot).convert("RGBA")
-        out, x = [], 0
-        for _, px in jobs:
-            out.append(sheet.crop((x, 0, x + px, px)))
-            x += px + 8
-        return out
-
-
-(HERE / "icon.svg").write_text(ICON, encoding="utf-8")
-icon, fg, bg, mono = render([(ICON, 512), (FOREGROUND, 432), (BACKGROUND, 432), (MONOCHROME, 432)])
-icon.save(HERE / "icon.png")
-fg.save(HERE / "adaptive-foreground.png")
-bg.save(HERE / "adaptive-background.png")
-mono.save(HERE / "adaptive-monochrome.png")
-print("icons ok")
+mono = Image.new("RGBA", (N, N), (255, 255, 255, 0))
+mono.putalpha(fg.getchannel("A"))
+mono.save(HERE / "adaptive-monochrome.png", optimize=True)
+print("app icon ok")

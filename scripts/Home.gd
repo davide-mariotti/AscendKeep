@@ -270,10 +270,9 @@ func _ready() -> void:
 	if not Meta.intro_seen:
 		_show_intro()
 
-# Builds a looping AnimatedTexture from the numbered frames baked by
-# scripts/tools (see prompt/home-splash-animation.json) — the frames already
-# fade to/from black at the loop seam. Falls back to the static PNG set in
-# the scene if the frames folder is missing.
+# Builds a looping AnimatedTexture from the numbered frames extracted from
+# docs/art-source/home-splash.mp4 (prompt in docs/prompts/home-splash-animation.json):
+# the frames already fade to/from black at the loop seam.
 func _setup_splash_animation() -> void:
 	var dir := DirAccess.open(SPLASH_FRAMES_DIR)
 	if dir == null:

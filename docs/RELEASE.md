@@ -49,11 +49,13 @@ Le modifiche a scheda e dichiarazioni sono salvate ma **non ancora inviate in re
 
 ## Da fare, in ordine
 
+0. Nella scheda dello Store sostituire l'icona con la nuova `store/icon-512.png` (la torre illustrata) e salvare.
 1. **Build 0.1.1** (versionCode 2):
    - `USE_TEST_ADS := false` in `scripts/Ads.gd`;
    - `version/code=2` e `version/name="0.1.1"` in `export_presets.cfg`;
    - export firmato con `export-aab.sh 0.1.1`.
-   Contiene anche il pulsante "Privacy policy", che nella 0.1.0 non c'è.
+   Contiene anche il pulsante "Privacy policy" e l'icona illustrata (torre col nucleo azzurro), che nella 0.1.0 non ci sono:
+   la 0.1.0 ha ancora l'icona a glifo, che ora resta solo sul sito.
 2. Caricarla nel test interno e provarla su un telefono vero. Prima conviene aggiungere l'account come **tester di licenza**: così gli acquisti di prova non costano.
    Da controllare:
    - consenso GDPR al primo avvio;

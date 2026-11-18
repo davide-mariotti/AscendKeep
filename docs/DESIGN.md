@@ -17,9 +17,10 @@ Il mondo è stato inghiottito dal Vuoto. Ascend Keep è l'ultima struttura ancor
 - `ui/` — tema grafico condiviso (`UITheme.tres`)
 - `assets/icons/` — le icone dell'interfaccia, tutte da [Lucide](https://lucide.dev) 1.74.0 (ISC), la stessa libreria di tutti i miei progetti
 - `assets/sprites/` — sprite di gioco (Core, Voidborn, proiettile), artwork originale
-- `assets/art/` — illustrazioni più grandi: `home-splash.png`/`.mp4` (sorgenti) + `home_splash_frames/` (i 168 frame a piena fluidità che animano lo sfondo della Home, estratti dal video), `battle-background.png` (sfondo della battaglia)
+- `assets/art/` — illustrazioni più grandi: `home_splash_frames/` (i 168 frame a piena fluidità che animano lo sfondo della Home, estratti dal video), `battle-background.png` (sfondo della battaglia)
 - `assets/audio/sfx/` — effetti sonori (click, acquisti, colpi, morte Voidborn, game over), CC0
-- `prompt/` — prompt di generazione immagini (stile, torre, nemici, effetti, home splash, background di battaglia)
+- `docs/art-source/` — sorgenti non usate dal gioco: `home-splash.png`/`.mp4` (da cui vengono i frame), l'icona originale a 1024 px e la torre su sfondo trasparente
+- `docs/prompts/` — prompt di generazione immagini (stile, torre, nemici, effetti, home splash, background di battaglia)
 
 ## Flusso di gioco
 
@@ -38,7 +39,7 @@ A fine run (`Main.tscn`, torre distrutta): "Return to the Keep" torna alla Home,
 ## v1 — stato attuale
 
 **Implementato**
-- Torre centrale (il "Core") con HP, danno, raggio d'attacco e velocità di fuoco, spara un proiettile visibile al Voidborn più vicino nel raggio (`Tower.gd`, `Projectile.gd`); Core, Voidborn e proiettile usano artwork dedicata (`assets/sprites/`, generata da prompt in `prompt/*.json`)
+- Torre centrale (il "Core") con HP, danno, raggio d'attacco e velocità di fuoco, spara un proiettile visibile al Voidborn più vicino nel raggio (`Tower.gd`, `Projectile.gd`); Core, Voidborn e proiettile usano artwork dedicata (`assets/sprites/`, generata da prompt in `docs/prompts/*.json`)
 - Voidborn che spawnano ai bordi di un'arena circolare, camminano verso la torre e la colpiscono in mischia; alla morte lasciano un piccolo effetto di dissolvenza invece di scomparire di colpo
 - Loop a ondate: numero di Voidborn e loro forza (HP/velocità/danno) crescono a ogni wave (`Main.gd`) — il numero per wave è comunque limitato a `MAX_WAVE_ENEMIES` (60) e i nemici vivi contemporaneamente a `MAX_ALIVE_ENEMIES` (40): senza questo tetto, a wave molto alte (raggiungibili in fretta testando a time_scale alto) il conteggio cresceva senza limite se il danno non teneva il passo, accumulando centinaia di nodi finché non crashava il rendering
 - **Sistema Tier** (`Meta.gd`, `Main.gd`): ogni tier è un gauntlet di 100 wave, con un boss ogni 10 wave (ricompensa Souls x5 + 1 Skill Point). Il boss del **Tier 1** usa lo sprite dedicato `assets/sprites/boss-the-hollow-crown.png`; dal Tier 2 in su, finché non esiste altra art dedicata, è lo stesso Voidborn scalato ~12x HP / 2.5x danno con un glow viola invece di ciano. Raggiungere la wave 50 del tier più alto sbloccato apre il tier successivo — quelli già sbloccati restano rigiocabili per sempre, con nemici e ricompense scalati (`Meta.tier_difficulty_multiplier()` +20%/tier, `Meta.tier_reward_multiplier()` +25%/tier), fino a un tetto di 100 tier. Alla wave 50 e alla wave 100 di ogni tier si sblocca automaticamente un bonus permanente e cumulativo (+1% HP e +1% danno rispettivamente) — è lo strato di progressione che rende il gioco tendenzialmente infinito.
@@ -60,7 +61,7 @@ A fine run (`Main.tscn`, torre distrutta): "Return to the Keep" torna alla Home,
 - Meta-progressione persistente su file (`user://save.json`)
 - Introduzione narrativa di 3 frasi alla primissima apertura della Home (skippabile, non si ripete più, replicabile dal menu)
 - Migrazione automatica dei salvataggi pre-lore (`points`/`coins` → `souls`), nessuna perdita di progressi
-- Tema UI allineato alla style bible (`prompt/visual-style.json`): navy/nero quasi puro, bordi ciano sottili, oro riservato al bottone BATTLE e alla valuta Souls, cremisi solo sulla barra HP
+- Tema UI allineato alla style bible (`docs/prompts/visual-style.json`): navy/nero quasi puro, bordi ciano sottili, oro riservato al bottone BATTLE e alla valuta Souls, cremisi solo sulla barra HP
 - Effetti sonori CC0 (`Audio.gd`, autoload) su click, acquisti riusciti/falliti, colpo della torre, danno subito, morte Voidborn, game over; più vibrazione mobile su colpi/acquisti/game over
 - Impostazioni audio/vibrazione nel menu: SFX, Musica e Vibrazione si possono disattivare singolarmente, persistite in `Meta.gd`
 - Sfondo animato a schermo intero nella tab Battle, tramite `AnimatedTexture` costruita a runtime da `Home.gd` (168 frame, 24fps nativi per un movimento fluido, ~7s), con fade a/da nero al punto di giunzione per rendere il loop invisibile; visibile solo sulla tab Battle, nascosto sulle altre
@@ -71,7 +72,7 @@ A fine run (`Main.tscn`, torre distrutta): "Return to the Keep" torna alla Home,
 - Autoload `Purchases.gd` che avvolge il plugin Google Play Billing (`BillingClient`): avvia la connessione all'avvio, richiama i purchase esistenti (restore automatico), e alla conferma di un acquisto chiama `Meta.grant_real_purchase()` + acknowledge — **funziona solo su una build Android reale firmata**, nessun mock in editor (a differenza di AdMob)
 - Autoload `Backend.gd` che avvolge il plugin GodotFirebase per il login anonimo: resta inerte (nessuna chiamata di rete) finché `addons/godot-firebase/.env` non viene compilato con un vero progetto Firebase — al momento è così, verificato via boot headless senza errori
 - Pubblicità reali con **AdMob** (plugin `addons/admob` by Poing Studios, MIT): `Ads.gd` chiama la vera API (`MobileAds`, `RewardedAdLoader`) con gli Ad Unit ID reali del progetto — vedi "Monetizzazione" sotto per lo stato esatto e cosa manca ancora prima di andare live
-- Icona app e logo "ASCEND KEEP" generati (`assets/art/icon.png`, `assets/art/logo.png`), collegati a Project Settings/export Android e alla splash della Home
+- Icona app e logo "ASCEND KEEP" generati (icona: `docs/art-source/icon-1024.png`, logo: `assets/art/logo.png`). `assets/art/app-icon/make-icons.py` ne ricava l'icona del launcher e i tre livelli adattivi Android (torre, sfondo, monocromatica). L'icona "a glifo" stile Lucide esiste solo sul sito, per stare in linea con le altre app
 - Missioni giornaliere (`Meta.MISSION_TEMPLATES`): 3 missioni casuali al giorno (raggiungi wave X, sconfiggi N Voidborn, guadagna N Souls, guarda N pubblicità), progresso cumulativo su tutte le run della giornata, un reroll gratuito al giorno, popup dedicato dal menu
 - Milestone track (`Meta.MILESTONES`): ricompense una tantum permanenti per la wave più alta mai raggiunta (5/10/15/20/30/40/50), raddoppiate per sempre con l'acquisto one-shot "Milestone Pass" (300 Souls) — pattern free/premium senza bisogno di una UI live durante la run
 - Bonus pubblicità "a streak": guardare più annunci Souls entro 30 minuti l'uno dall'altro fa crescere il moltiplicatore di ricompensa (+5% per annuncio, fino a +20%) invece di pagare sempre lo stesso importo fisso, senza alzare il tetto di 5/giorno
@@ -147,4 +148,4 @@ DA:C4:21:36:6B:71:26:07:A9:9A:AC:E2:EA:7F:CF:56:EB:1A:96:AE
 
 ## Crediti
 
-Icone da [Lucide](https://lucide.dev) (ISC), suoni da Kenney e artisticdude via OpenGameArt (tutti CC0) — vedi `assets/icons/CREDITS.md`. Gli sprite in-battaglia (Core, Voidborn, proiettile) sono artwork originale generata da prompt (`prompt/*.json`).
+Icone da [Lucide](https://lucide.dev) (ISC), suoni da Kenney e artisticdude via OpenGameArt (tutti CC0) — vedi `assets/icons/CREDITS.md`. Gli sprite in-battaglia (Core, Voidborn, proiettile) sono artwork originale generata da prompt (`docs/prompts/*.json`).

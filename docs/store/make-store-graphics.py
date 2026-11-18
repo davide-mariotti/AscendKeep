@@ -1,6 +1,6 @@
 """Play Store graphics for AscendKeep, built from the game's own assets.
 
-- icon-512.png      512x512, full square (Google rounds the corners itself), same glyph and colour as the app icon
+- icon-512.png      512x512, the illustrated tower icon, full square (Google rounds the corners itself)
 - feature-1024x500.png  the Keep artwork on the right, name and tagline on the left
 
 Needs Chrome (renders the HTML) and Pillow. Run from the repo root: python docs/store/make-store-graphics.py
@@ -11,9 +11,6 @@ from PIL import Image
 ROOT = pathlib.Path(__file__).resolve().parents[2]
 HERE = pathlib.Path(__file__).parent
 CHROME = r"C:\Program Files\Google\Chrome\Application\chrome.exe"
-COLOR = "#5b21b6"
-CASTLE = ('<path d="M10 5V3"/><path d="M14 5V3"/><path d="M15 21v-3a3 3 0 0 0-6 0v3"/><path d="M18 3v8"/>'
-          '<path d="M18 5H6"/><path d="M22 11H2"/><path d="M22 9v10a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V9"/><path d="M6 3v8"/>')
 
 
 def b64(path):
@@ -31,15 +28,11 @@ def shot(html, w, h, out):
         Image.open(png).convert("RGB").crop((0, 0, w, h)).save(out, optimize=True)
 
 
-# icon: the app icon template without the rounded corners (Play masks it)
-icon_svg = (f'<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><rect width="512" height="512" fill="{COLOR}"/>'
-            f'<g transform="translate(106 106) scale(12.5)" fill="none" stroke="#fff" stroke-width="2.3" stroke-linecap="round" '
-            f'stroke-linejoin="round">{CASTLE}</g><circle cx="432" cy="432" r="20" fill="#020402"/></svg>')
-shot(f'<body style="margin:0"><img style="display:block;width:512px;height:512px" src="data:image/svg+xml;base64,'
-     f'{base64.b64encode(icon_svg.encode()).decode()}"></body>', 512, 512, HERE / "icon-512.png")
+# icon: the game's own illustrated icon
+Image.open(ROOT / "docs/art-source/icon-1024.png").convert("RGB").resize((512, 512), Image.LANCZOS).save(HERE / "icon-512.png", optimize=True)
 
 # feature graphic
-splash = b64(ROOT / "assets/art/home-splash.png")
+splash = b64(ROOT / "docs/art-source/home-splash.png")
 logo = b64(ROOT / "assets/art/logo.png")
 feature = f'''<!doctype html><meta charset="utf-8">
 <link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;600&display=block" rel="stylesheet">
