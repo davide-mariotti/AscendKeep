@@ -106,7 +106,11 @@ func pull_save() -> void:
 	if doc == null or doc.keys().is_empty():
 		push_save()
 		return
-	Meta.apply_save_data(doc.get_unsafe_document())
+	var data: Dictionary = doc.get_unsafe_document()
+	# Paid items come only from Google Play (Purchases.gd re-grants them at every
+	# launch): the user can write their own cloud doc, so it can't unlock them.
+	data.erase("real_purchases")
+	Meta.apply_save_data(data)
 	Meta.progress_changed.emit()
 
 func push_save() -> void:

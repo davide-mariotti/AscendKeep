@@ -1104,4 +1104,6 @@ func apply_save_data(data: Dictionary) -> void:
 	for key in loaded_real_purchases.keys():
 		real_purchases[key] = loaded_real_purchases[key]
 	active_core_skin = data.get("active_core_skin", "default")
+	if not real_purchases.get(active_core_skin, false):
+		active_core_skin = "default"
 	_save()
